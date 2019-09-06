@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  background: linear-gradient(0deg, rgba(6,33,138,1) 0%, rgba(138,47,148,1) 47%, rgba(255,162,0,1) 100%);
 }
 
 body {
@@ -9,7 +8,41 @@ body {
   height: 100vh;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(0deg, rgba(6,33,138,1) 0%, rgba(138,47,148,1) 47%, rgba(255,162,0,1) 100%);
+}
+
+.canvas-container {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat {
+  display: flex;
+  background: white;
+  margin-left: 15px;
+  height: 800px;
+  width: 300px;
+  flex-direction: column;
+}
+
+.chat input {
+  background: white;
+  color: black;
+}
+
+.message-container {
+  display: flex;
+  background: white;
+  width: 100%;
+  min-height: 600px;
+  flex-direction: column;
+}
+
+.message-container li {
+  list-style: none;
+  padding-left: 15px;
 }
 
 canvas {

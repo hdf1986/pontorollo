@@ -18,6 +18,10 @@ io.on('connection', function(socket){
 
     io.emit('clear')
   })
+
+  socket.on('chat', message => {
+    io.emit('chat', message)
+  })
 });
 
 app.use(express.static('public'))
