@@ -8,9 +8,20 @@
   <link rel="stylesheet" href="/main.css">
 </head>
 <body>
-  <a href="#" class="clear-action">Clear</a>
-  <canvas width="800" height="800" class="canvas"></canvas>
+<div class="canvas-container">
+    <a href="#" class="clear-action">Clear</a>
+    <canvas width="800" height="800" class="canvas"></canvas>
+  </div>
+  <div class="chat">
+    <ul class="message-container">
+    </ul>
+    <form class="chat-form">
+      <input type="text" name="message" placeholder="Message">
+      <input type="text" name="nick" placeholder="Nick" required>
 
+      <input type="submit">
+    </form>
+  </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="main.js"></script>
 </body>

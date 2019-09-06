@@ -1,6 +1,8 @@
 (function () {
   const $canvas = document.querySelector('.canvas');
   const $clearAction = document.querySelector('.clear-action');
+  const $chatForm = document.querySelector('.chat-form');
+  const $chatList = document.querySelector('.message-container');
   const context = $canvas.getContext('2d');
   const socket = io()
   let dots = []
@@ -49,4 +51,18 @@
   fetch('/points')
     .then(res => res.json())
     .then(points => points.forEach(({x, y, clicked}) => drawPoint(x, y, clicked)))
+    socket.on('chat', ({message}) => {
+      const newMessage = document.createElement('li')
+      newMessage.innerText = message
+      $chatList.appendChild(newMessage)
+    })
+  
+  $chatForm.addEventListener('submit', e => {
+    e.preventDefault()
+    const currentValue = document.querySelector('[name=message]').value;
+    const currentNick = document.querySelector('[name=nick]').value;
+    if(currentValue === '') return;
+
+    socket.emit('chat', { message: `${currentNick}: ${currentValue}` })
+  })
 })()
