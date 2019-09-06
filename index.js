@@ -3,7 +3,7 @@ const app = express()
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
-const points = [];
+let points = [];
 
 io.on('connection', function(socket){
   console.log('a user connected');
@@ -11,6 +11,12 @@ io.on('connection', function(socket){
   socket.on('draw', (message) => {
     points.push(message)
     io.emit('draw', message)
+  })
+
+  socket.on('clear', () => {
+    points = []
+
+    io.emit('clear')
   })
 });
 

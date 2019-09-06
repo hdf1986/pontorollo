@@ -1,8 +1,16 @@
 (function () {
   const $canvas = document.querySelector('.canvas');
+  const $clearAction = document.querySelector('.clear-action');
   const context = $canvas.getContext('2d');
   const socket = io()
-  const dots = []
+  let dots = []
+
+  $clearAction.addEventListener('click', e => {
+    e.preventDefault()
+
+    dots = []
+    socket.emit('clear')
+  })
 
   const drawPoint = (x, y, clicked) => {
     dots.push({ x, y, clicked })
@@ -37,4 +45,8 @@
     socket.emit('draw', { x, y, clicked })
     drawPoint(x, y, clicked)
   })
+
+  fetch('/points')
+    .then(res => res.json())
+    .then(points => points.forEach(({x, y, clicked}) => drawPoint(x, y, clicked)))
 })()
