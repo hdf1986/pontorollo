@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const http = require('http').createServer(app);
 var io = require('socket.io')(http);
-const port = 3000
+const port = process.env.PORT || 3000
 
 io.on('connection', function(socket){
   console.log('a user connected');
