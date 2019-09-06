@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(0deg, rgba(6,33,138,1) 0%, rgba(138,47,148,1) 47%, rgba(255,162,0,1) 100%);
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+canvas {
+  border: 1px solid green;
+  background: white;
+}
